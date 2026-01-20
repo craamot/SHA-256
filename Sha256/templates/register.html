@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 900px;
+    height: 520px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* LEFT FORM */
+.left {
+    width: 55%;
+    padding: 50px;
+}
+
+.left h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    gap: 10px;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background: #7da2ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #678cff;
+}
+
+/* RIGHT */
+.right {
+    width: 45%;
+    background: linear-gradient(135deg, #4fa3ff, #6c7bff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.right h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.right p {
+    margin-bottom: 30px;
+}
+
+.btn-login {
+    padding: 12px 35px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ERROR */
+.error {
+    background: #ffd0d0;
+    color: #8b0000;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- LEFT REGISTER -->
+    <div class="left">
+        <h2>Register</h2>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="input-box">
+                👤
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-box">
+                🧑
+                <input type="text" name="nama" placeholder="Nama Lengkap" required>
+            </div>
+
+            <div class="input-box">
+                🔒
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="input-box">
+                🔒
+                <input type="password" name="confirm" placeholder="Konfirmasi Password" required>
+            </div>
+
+            <button class="btn" type="submit">Daftar</button>
+        </form>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+        <h1>Sudah Punya Akun?</h1>
+        <p>Silakan login untuk masuk</p>
+        <a href="/">
+            <button class="btn-login" type="button">Login</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

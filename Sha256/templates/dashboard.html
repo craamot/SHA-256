@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Crypto</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: url("https://i.imgur.com/XnKZyHn.png") no-repeat center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 480px;
+            background: rgba(200, 255, 200, 0.85);
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .welcome {
+            color: #4CAF50;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .total {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #43a047;
+        }
+
+        .logout {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #444;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="welcome">
+        Selamat datang, {{ user.nama }}
+    </div>
+
+    <h3>Pembelian Cryptocurrency</h3>
+
+    <!-- FORM POST KE FLASK -->
+    <form action="/transaksi" method="POST" oninput="hitungTotal()">
+
+        <label>Pilih Koin:</label>
+        <select name="koin" id="coin">
+            <option value="Darmacoin (DRP)">Darmacoin (DRP) - Rp 2.500,00</option>
+            <option value="Bitcoin Mini (BTCm)">Bitcoin Mini (BTCm) - Rp 5.000,00</option>
+            <option value="Ether Mini (ETHm)">Ether Mini (ETHm) - Rp 1.500,00</option>
+        </select>
+
+        <label>Jumlah yang Dibeli:</label>
+        <input type="number" name="jumlah" id="jumlah" value="1" min="1" required>
+
+        <div class="total">
+            Total Harga: Rp <span id="total">0</span>
+        </div>
+
+        <button type="submit">Beli Crypto</button>
+    </form>
+
+    <a href="/logout" class="logout">Logout</a>
+</div>
+
+<script>
+    function hitungTotal() {
+        const hargaMap = {
+            "Darmacoin (DRP)": 2500,
+            "Bitcoin Mini (BTCm)": 5000,
+            "Ether Mini (ETHm)": 1500
+        };
+
+        const coin = document.getElementById("coin").value;
+        const jumlah = document.getElementById("jumlah").value || 0;
+
+        const total = hargaMap[coin] * jumlah;
+
+        document.getElementById("total").innerText =
+            total.toLocaleString("id-ID");
+    }
+
+    hitungTotal();
+</script>
+
+</body>
+</html>

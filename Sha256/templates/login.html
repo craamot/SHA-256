@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 900px;
+    height: 520px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* LEFT */
+.left {
+    width: 55%;
+    padding: 50px;
+}
+
+.left h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.forgot {
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.forgot a{
+    text-decoration: none;
+    color: #555;
+}
+
+.forgot a:hover{
+    color: #4fa3ff;
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background: #7da2ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #678cff;
+}
+
+.social-text {
+    text-align: center;
+    margin: 20px 0 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* RIGHT */
+.right {
+    width: 45%;
+    background: linear-gradient(135deg, #4fa3ff, #6c7bff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.right h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.right p {
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.btn-register {
+    padding: 12px 35px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ERROR */
+.error {
+    background: #ffd0d0;
+    color: #8b0000;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- LEFT LOGIN -->
+    <div class="left">
+        <h2>Login</h2>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <!-- 🔥 FORM TERHUBUNG KE FLASK -->
+        <form action="/login" method="POST">
+            <div class="input-box">
+                👤
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-box">
+                🔒
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- ✅ LINK LUPA PASSWORD -->
+            <div class="forgot">
+                <a href="/forgot">Lupa Password?</a>
+            </div>
+
+            <button class="btn-login" type="submit">Login</button>
+        </form>
+
+        <div class="social-text">Atau login dengan sosial media</div>
+    </div>
+
+    <!-- RIGHT REGISTER -->
+    <div class="right">
+        <h1>Hallo, Selamat Datang!</h1>
+        <p>Belum Punya Akun?</p>
+        <a href="/register">
+            <button class="btn-register" type="button">Daftar Sekarang</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

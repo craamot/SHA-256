@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Lupa Password</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+body{
+    height:100vh;
+    background:#eaeaea;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    width:420px;
+    background:white;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+h2{
+    margin-bottom:20px;
+}
+.input-box{
+    border:1px solid #aaa;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+.input-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+button{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    background:#7da2ff;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
+button:hover{
+    background:#678cff;
+}
+.error{
+    background:#ffd0d0;
+    color:#8b0000;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:6px;
+    font-size:14px;
+}
+.back{
+    margin-top:15px;
+    text-align:center;
+}
+.back a{
+    text-decoration:none;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Lupa Password</h2>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="input-box">
+            <input type="text" name="username" placeholder="Masukkan Username" required>
+        </div>
+        <button type="submit">Lanjut</button>
+    </form>
+
+    <div class="back">
+        <a href="/">← Kembali ke Login</a>
+    </div>
+</div>
+
+</body>
+</html>
